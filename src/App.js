@@ -1,10 +1,11 @@
 import ListTodo from './components/ListTodo';
-// import ListDone from './components/ListDone';
-// import ListDoing from './components/ListDoing';
 
 import { useState } from "react";
 
 export const App = () => {
+
+  //javascript goes below
+
   const [todo, setTodo] = useState ()
   const [todoArray, setTodoArray] = useState ([])
 
@@ -18,15 +19,32 @@ const submitHandler = (event) => {
   tempArray.push(todo)
   setTodoArray(tempArray)
   setTodo("")
+  console.log(todo)
 }
 
 const deleteHandler = (event) => {
   const tempArray = [...todoArray]
   tempArray.splice(event.target.value, 1)
-  console.log(tempArray)
+  // console.log(tempArray)
   setTodoArray(tempArray)
-  console.log(todoArray)
+  // console.log(todoArray)
 }
+
+const tickHandler = (event) => {
+  if (event.target.style.textDecoration) {
+    (event.target.style.removeProperty('text-decoration'))
+  } else {
+    (event.target.style.setProperty('text-decoration', 'line-through'))
+  }
+  console.log(event.target.value)
+  // console.log(event.target.style)
+  // console.log(event.target)
+  // console.log(event)
+}
+
+//end of javascript
+
+//jsx goes below
 
 return (
   <div className='App'>
@@ -34,12 +52,13 @@ return (
       <input value={todo} placeholder="Task" onChange={ handleChange }/>
         <button onClick={ submitHandler }
         >+</button>
-        <label>To-Do</label>
-      <ListTodo deleteHandler={deleteHandler} todoArray={todoArray} />
-        
+        <h1>To-Do</h1>
+      <ListTodo tickHandler={ tickHandler } deleteHandler={ deleteHandler } todoArray={todoArray} />
       </div>
     </div>
   )
 }
+
+//end of jsx
 
 export default App;
