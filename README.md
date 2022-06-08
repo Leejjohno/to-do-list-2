@@ -1,3 +1,5 @@
+This is a todo list made with React. It currently lacks visual styling or CSS, but is technically functional.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
